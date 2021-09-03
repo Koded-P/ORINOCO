@@ -1,70 +1,30 @@
-function myProductList (){
-    const request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200){
-            const response = JSON.parse(this.responseText);
+fetch("http://localhost:3000/api/cameras/")
 
-            //BODY SELECTOR 
-            let body = document.querySelector("body");
+.then(response => { return response.json() })
 
-            
-            let productList = document.createElement("div");
-            productList.className = "container";
-            body.appendChild(productList);
-            
-            //LOOP BLOCK
-            for(let i = 0; i < response.length; i++){
-                //Add Images to DOM
-                let img = response[i].imageUrl;
-                let name = response[i].name;
-                let description = response[i].description;
-                let id = response[i]._id;
+.then(data => {
 
-                //Add Html Container
-                let div = document.createElement("div");
-                div.className = "row";
-                productList.appendChild(div);
+    console.log(data)
 
-                //Add Link Element
-                let a = document.createElement("a");
-                a.className = "link"
-                div.appendChild(a);
-                a.href = "product.html?id=" + id;
+    //afficher sur la page html
+    let listOfProducts = '';
+    data.forEach(prod =>
+        listOfProducts += `
+      <div class='col-12 col-md-4 col-lg-3'>
+        <div class="card">
+          <img src=${prod.imageUrl} class="card-img-top">
+          <div class="card-body"></div>
+            <h3 class="card-title" ><a href="article.html?id=${prod._id}">${prod.name}</a></h3>
+            <p class="card-text">${prod.price}€</p>
+          </div>
+      </div>
+      `
+    );
 
-                //Add Event Listener
-                a.addEventListener("click", function(event){
-                    console.log(id);
-                    if(id){
-                        console.log(name)
+    document.getElementById('allproducts').innerHTML = listOfProducts;
 
-                    }
-                })
+})
 
-                //List of Products 
-                function productListInfo(){
-                    let productImg = document.createElement("img");
-                    productImg.className = "card-img-top";
-                    productImg.src = img;
-                    a.appendChild(productImg);  
-                    
-                    let h2 = document.createElement("h2");
-                    h2.className = "card-title";
-                    h2.innerHTML = name;
-                    a.appendChild(h2);
-
-                    let descriptionProduct = document.createElement("p");
-                    descriptionProduct.className ="card-text";
-                    descriptionProduct.innerHTML = description;
-                    a.appendChild(descriptionProduct);
-
-                }
-                productListInfo();
-                     
-            }
-        }
-    }
-    request.open("GET", "http://localhost:3000/api/cameras");
-    request.send();
-}
-
-myProductList();
+.catch(function (error) {
+  window.alert('Le serveur n\'est pas disponible, essayez ultérieurement.');
+});

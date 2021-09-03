@@ -1,0 +1,89 @@
+header {
+    background-color: #d3d3d3;
+  }
+  
+  .card-img-top{
+    height: 190px;
+    object-fit: cover;/*affiche l'image qui reste centrer en gardant l'aspect ratio*/
+  }
+  
+  
+  h1, h2{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .metier p {
+    margin-left: 3rem;
+  }
+  
+  table table-image{
+  
+      width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+      table-layout: fixed;
+      width: 30%;
+  
+    }
+  
+  thead {
+      text-align: left;
+    }
+  
+  table table-image td,
+  table table-image th {
+    border: 1px solid #fcf5d9;
+    padding: 3px 2px;
+  }
+  
+  th, td {
+    border: 1px solid black;
+  
+    }
+  
+  caption{
+    padding-top: 50px;
+    margin-left: 3rem;
+  }
+  
+  footer{
+  display: flex!important;
+  justify-content: space-around;
+  padding-top: 30px;
+  background-color: #d3d3d3;
+  }
+  
+  #allproducts {
+    width: auto;
+  }
+  
+  @media (max-width : 450px) {
+    #allproducts {
+    margin: 50px 40px;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    #allproducts {
+      margin: 30px 10px;
+    }
+  }
+  
+  @media screen and (max-width:450px){
+  
+    .pied p{
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      align-items: center;
+      text-align: center;
+      font-size: 13px;
+    }
+  
+    ul {
+      font-size: 13px;
+    }
+  
+  }
+  
