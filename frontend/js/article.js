@@ -35,11 +35,11 @@ fetch("http://localhost:3000/api/cameras/" + productId)
 })
 
 .catch(function (error) {
-  window.alert('Le serveur n\'est pas disponible, essayez ultérieurement.');
+  window.alert('oops something went wrong! Try again.');
 });
 
 //Add to Cart 
-function ajouterAuPanier() {
+function AddtoCart() {
   if (product == null) {
     return;
   }
