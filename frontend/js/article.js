@@ -14,7 +14,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
     let colors = "";
 
     for (const color of data.colors) {
-        colors += `<option>${color}</option> `; //sélection de couleurs
+        colors += `<option>${color}</option> `; //color selection
     }
 
     let container = `
@@ -38,7 +38,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
   window.alert('Le serveur n\'est pas disponible, essayez ultérieurement.');
 });
 
-//Ajout panier
+//Add to Cart 
 function ajouterAuPanier() {
   if (product == null) {
     return;
@@ -47,13 +47,13 @@ function ajouterAuPanier() {
 
   let indexInBasket = basket.findIndex((item) => item._id === productId);
 
-  //index ==-1 signifie non trouvé
+  //index ==-1 means not found 
   if (indexInBasket < 0) {
-    // si non présent dans le panier
+    // if not present in the basket 
     product.quantity = 1;
 
     basket.push(product);
-  } // produit déja présent, modifier quantité
+  } // product already present modify quantity 
   else {
 
     basket[indexInBasket].quantity += 1;
