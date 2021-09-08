@@ -10,35 +10,33 @@ fetch("http://localhost:3000/api/cameras/" + productId)
 .then((data) => {
     console.log(data);
     product = data;
+    
+      let container = document.querySelector('#productList');
 
-    let colors = "";
-
-    for (const color of data.colors) {
-        colors += `<option>${color}</option> `; //color selection
-    }
-
-    let container = `
-    <div class='col'>
-        <div class="card">
-        <img src=${data.imageUrl} class="card-img-top">
-        <div class="card-body"></div>
-            <h3 class="card-title" >${data.name}</h3>
-            <p class="card-text">${data.price}€</p>
-            <select class="color">${colors}</select>
-        </div>
-    </div>
-        `;
-
-    document.getElementById("product").innerHTML = container;
-
-    console.log(container);
+      //HTML container
+  
+      let innerHTML = `
+      <div class='col'>
+          <div class="card">
+          <img src=${data.imageUrl} class="card-img-top">
+          <div class="card-body"></div>
+              <h3 class="card-title" >${data.name}</h3>
+              <p class="card-text">${data.price}€</p>
+              <select class="lenses">${data.lenses}</select>
+          </div>
+      </div>
+          `;
+  
+      document.getElementById("productList").insertAdjacentHTML('beforeend',innerHTML) ;
+      console.log(container);
 })
 
-.catch(function (error) {
+
+.catch(function () {
   window.alert('oops something went wrong! Try again.');
 });
 
-//Add to Cart 
+//Add to Basket
 function AddtoCart() {
   if (product == null) {
     return;
@@ -47,13 +45,13 @@ function AddtoCart() {
 
   let indexInBasket = basket.findIndex((item) => item._id === productId);
 
-  //index ==-1 means not found 
+  //index ==-1 signifie non trouvé
   if (indexInBasket < 0) {
-    // if not present in the basket 
+    // si non présent dans le panier
     product.quantity = 1;
 
     basket.push(product);
-  } // product already present modify quantity 
+  } // produit déja présent, modifier quantité
   else {
 
     basket[indexInBasket].quantity += 1;
