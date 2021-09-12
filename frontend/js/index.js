@@ -1,4 +1,4 @@
-fetch("http://localhost:3000/api/cameras/")
++fetch("http://localhost:3000/api/cameras/")
 
 .then(response => { return response.json() })
 

@@ -2,8 +2,6 @@ const urlParam = new URLSearchParams(window.location.search);
 let productId = urlParam.get("id");
 let product = null;
 
-
-
   // FETCH API
 
 fetch("http://localhost:3000/api/cameras/" + productId)
@@ -12,11 +10,14 @@ fetch("http://localhost:3000/api/cameras/" + productId)
     })
 
 .then((data) => {
-    console.log(data);
+  let lenses = "";
 
-
-      //HTML container
+  for (const cameraSelect of data.lenses) {
+    lenses += `<option>${cameraSelect}</option>`
+  }
   
+
+    //HTML container
       let innerHTML = `
       <div class='col'>
           <div class="card">
@@ -24,17 +25,16 @@ fetch("http://localhost:3000/api/cameras/" + productId)
           <div class="card-body"></div>
               <h3 class="card-title" >${data.name}</h3>
               <p class="card-text">${data.price}€</p>
-              <select>
-                <option disabled hidden selected>select</option>
-                <option>${data.lenses}</option>
-              </select>
+              <select id="lenses">${lenses}</select>
               <h2>result</h2>
           </div>
       </div>
           `;
 
       document.getElementById("productList").insertAdjacentHTML('beforeend',innerHTML) ;
-      console.log(container);
+
+      console.log(data);
+     
 })
 
 .catch(function () {
