@@ -12,12 +12,13 @@ fetch("http://localhost:3000/api/cameras/" + productId)
 .then((data) => {
   let lenses = "";
 
+  //Loop for lenses
   for (const cameraSelect of data.lenses) {
     lenses += `<option>${cameraSelect}</option>`
   }
   
 
-    //HTML container
+    //InnerHTML
       let innerHTML = `
       <div class='col'>
           <div class="card">
@@ -26,7 +27,6 @@ fetch("http://localhost:3000/api/cameras/" + productId)
               <h3 class="card-title" >${data.name}</h3>
               <p class="card-text">${data.price}€</p>
               <select id="lenses">${lenses}</select>
-              <h2>result</h2>
           </div>
       </div>
           `;
@@ -37,6 +37,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
      
 })
 
+//Catch Erros 
 .catch(function () {
   window.alert('oops something went wrong! Try again.');
 });
