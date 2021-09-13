@@ -11,13 +11,12 @@ fetch("http://localhost:3000/api/cameras/" + productId)
 
 .then((data) => {
   let lenses = "";
-
+debugger
   //Loop for lenses
   for (const cameraSelect of data.lenses) {
     lenses += `<option>${cameraSelect}</option>`
   }
   
-
     //InnerHTML
       let innerHTML = `
       <div class='col'>
@@ -37,7 +36,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
      
 })
 
-//Catch Erros 
+//Catch Errors 
 .catch(function () {
   window.alert('oops something went wrong! Try again.');
 });
