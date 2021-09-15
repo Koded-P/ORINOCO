@@ -1,7 +1,6 @@
 const urlParam = new URLSearchParams(window.location.search);
 let productId = urlParam.get("id");
 let product = null;
-
   // FETCH API
 
 fetch("http://localhost:3000/api/cameras/" + productId)
@@ -11,7 +10,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
 
 .then((data) => {
   let lenses = "";
-debugger
+
   //Loop for lenses
   for (const cameraSelect of data.lenses) {
     lenses += `<option>${cameraSelect}</option>`
@@ -41,29 +40,36 @@ debugger
   window.alert('oops something went wrong! Try again.');
 });
 
+//First you need to get access to to your AddtoCart button on HTML
+//Add a function for AddtoCart
+//Make Event Listener for addcart capture the values in name, price, lenses
+//Also make your event listener do the localStorage to store values in local storage
+//Call the get-item on next page to retrieve data
+//Don't forget to parse and stringify the JSON object 
 
+function addToCart(){
+    //for the add to cart button 
+    const submitButton = document.getElementById ("submitProductButton");
+    //listen for click events to this button  
+    submitProductButton.addEventListener("click", (event) => {
+        event.preventDefault();
 
-//Add to Basket
-function AddtoCart() {
-  if (product == null) {
-    return;
-  }
-  let basket = GetBasket();
+      //creating constant for lenses and recovery of value 
+      const cameraSelect = document.getElementById("lenses");
+      const lenses = cameraSelect.value;
 
-  let indexInBasket = basket.findIndex((item) => item._id === productId);
+      //creating object to add to the basket 
 
-  //index ==-1
-  if (indexInBasket < 0) {
-    // if not present in basket
-    product.quantity = 1;
+      let newProduct = {
+        lenses: cameraSelect.value,
+      };
 
-    basket.push(product);
-  } // product already present modify quantity
-  else {
+      let productBasket = JSON.parse(localStorage.getItem("product"));
 
-    basket[indexInBasket].quantity += 1;
-  }
-
-  SaveBasket(basket);
-  window.alert("The item will be added to your Cart.");
+      if (productBasket < 1) {
+        productBasket = [];
+      }
+      productBasket.push(newProduct);
+      localStorage.setItem("product", JSON.stringify(productBasket));
+    });
 }
