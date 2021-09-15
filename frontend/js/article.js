@@ -56,7 +56,6 @@ function addToCart(){
 
       //creating constant for lenses and recovery of value 
       const cameraSelect = document.getElementById("lenses");
-      const lenses = cameraSelect.value;
 
       //creating object to add to the basket 
 

@@ -1,6 +1,20 @@
 //retrieve from local storage 
 let product = localStorage.getItem('product');
 
+//constants
+const name = document.getElementByClassName("product-title");
+product-title = {data.imageUrl};
+
+const productPrice = document.getElementByClassName("price");
+price = ${data.price};
+
+const productQuantity = document.getElementByClassName("quantity");
+quantity = ${data.quantity};
+
+const cameraLenses = document.getElementByClassName("lenses");
+lenses = ${data.lenses};
+
+
 product = JSON.parse(product);
 console.log(product);
 if (product === null || product === []) {
