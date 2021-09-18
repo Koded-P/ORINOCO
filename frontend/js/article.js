@@ -44,6 +44,7 @@ fetch("http://localhost:3000/api/cameras/" + productId)
   window.alert('oops something went wrong! Try again.');
 });
 
+///ADD TO CART BLOCK
 //constants for products information
 const productImage = document.getElementsByClassName('card-img-top')[0];
 const productDescription = document.getElementsByClassName('card-description');
@@ -53,17 +54,45 @@ const productLenses = document.getElementsByClassName('lenses');
 //submit button
 const submitButton = document.getElementById('submitProductButton');
 
-//EventListener for add to cart button
-// submitButton.addEventListener('click', (e) =>{
-//   e.preventDefault();
-
-//   //creating basketpreview
-
-// })
-
 function AddToCart(data){
+  if(data == null){
+    return;
+  }
+  let cart = GetBasket();
+  let indexInBasket = GetBasket((data) => data._id === productId);
+
+  let getJsonCart = JSON.parse(localStorage.getItem('cart'))
+  let exist = false
+
+  if (indexInBasket <= 0) {
+    // data is present in basket 
+    data.quantity = 1;
+
+    cart.push(data);
+  } // data is present modify quantity
+  else {
+
+    cart[indexInBasket] += 1;
+  }
+
+  SaveBasket(cart);
+  window.alert("Added Item to cart");
+
+  getJsonCart.forEach(data => {
+
+    if (data._id == product._id) {
+        data.quantity ++
+        exist = true 
+    }
+})
+
+if (!exist) {
+    getJsonCart.push(data)
+}
 
   // you need to check if the localstorgae cart has value or not if have a value we need to push to this aarray if not we need to add the prouct 
   console.log(data)
   localStorage.setItem('cart',JSON.stringify(data))
 }
+
+
