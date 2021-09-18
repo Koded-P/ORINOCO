@@ -61,9 +61,6 @@ function AddToCart(data){
   let cart = GetBasket();
   let indexInBasket = GetBasket((data) => data._id === productId);
 
-  let getJsonCart = JSON.parse(localStorage.getItem('cart'))
-  let exist = false
-
   if (indexInBasket <= 0) {
     // data is present in basket 
     data.quantity = 1;
@@ -71,28 +68,40 @@ function AddToCart(data){
     cart.push(data);
   } // data is present modify quantity
   else {
-
     cart[indexInBasket] += 1;
   }
 
   SaveBasket(cart);
   window.alert("Added Item to cart");
 
-  getJsonCart.forEach(data => {
-
-    if (data._id == product._id) {
-        data.quantity ++
-        exist = true 
-    }
-})
-
-if (!exist) {
-    getJsonCart.push(data)
-}
-
-  // you need to check if the localstorgae cart has value or not if have a value we need to push to this aarray if not we need to add the prouct 
+  // you need to check if the localstorage cart has value or not if have a value we need to push to this aarray if not we need to add the prouct 
   console.log(data)
   localStorage.setItem('cart',JSON.stringify(data))
 }
+
+function GetBasket() {
+  let basketFromStorage = localStorage.getItem("cart");
+  if (basketFromStorage === null) {
+      return [];
+  } else {
+      return JSON.parse(basketFromStorage);
+  }
+}
+
+function SaveBasket(basketToSave) {
+  let basketAsString = JSON.stringify(basketToSave);
+  localStorage.setItem("cart", basketAsString);
+
+  let basketFromStorage = localStorage.getItem("cart");
+
+  for(let i = 0; i < basketFromStorage; i++){
+    if (data == 1) {
+
+      data.push(basketToSave)
+    }  
+  }
+}
+
+
 
 
