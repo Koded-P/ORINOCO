@@ -1,20 +1,6 @@
 //retrieve from local storage 
 let product = localStorage.getItem('product');
 
-//constants
-const name = document.getElementByClassName("product-title");
-product-title = {data.imageUrl};
-
-const productPrice = document.getElementByClassName("price");
-price = ${data.price};
-
-const productQuantity = document.getElementByClassName("quantity");
-quantity = ${data.quantity};
-
-const cameraLenses = document.getElementByClassName("lenses");
-lenses = ${data.lenses};
-
-
 product = JSON.parse(product);
 console.log(product);
 if (product === null || product === []) {
@@ -22,7 +8,7 @@ if (product === null || product === []) {
 }
 async function getProduct(id) {
     try {
-        let response = await fetch("http://localhost:3000/api/cameras/" + productId, { methode: 'GET' })
+        let response = await fetch("http://localhost:3000/api/cameras/" + productId, { method: 'GET' })
         return await response.json();
 
     } catch (error) {
@@ -33,7 +19,7 @@ let products = []; //initialiser une variable
 //console.log('avant', products);
 //let i = 0;
 //let ids = [];
-product.forEach(id => {
+products.forEach(id => {
         // console.log(++i, id);
         //if (ids.indexOf(id) === -1) {
         getProduct(id).then(product => {
@@ -42,8 +28,6 @@ product.forEach(id => {
                     console.log(product);
                 }
             })
-            // ids.push(id);
-            // }
 
     })
     //console.log('apres', products);

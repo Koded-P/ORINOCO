@@ -19,18 +19,22 @@ fetch("http://localhost:3000/api/cameras/" + productId)
     //InnerHTML
       let innerHTML = `
       <div class='col'>
-          <div class="card">
+        <div class="card">
           <img src=${data.imageUrl} class="card-img-top">
           <div class="card-body"></div>
-              <h3 class="card-title" >${data.name}</h3>
-              <p class="card-text">${data.price}€</p>
+              <h3 class="card-description">${data.description}</h3>
+              <h3 class="card-name" >${data.name}</h3>
+              <p class="card-price">${data.price}€</p>
               <select id="lenses">${lenses}</select>
+
           </div>
+        </div>
+        <button type="button" id="submitProductButton" >Add To Cart</button>
       </div>
           `;
 
       document.getElementById("productList").insertAdjacentHTML('beforeend',innerHTML) ;
-
+      document.getElementById("submitProductButton").addEventListener('click',()=>AddToCart(data))
       console.log(data);
      
 })
@@ -40,35 +44,26 @@ fetch("http://localhost:3000/api/cameras/" + productId)
   window.alert('oops something went wrong! Try again.');
 });
 
-//First you need to get access to to your AddtoCart button on HTML
-//Add a function for AddtoCart
-//Make Event Listener for addcart capture the values in name, price, lenses
-//Also make your event listener do the localStorage to store values in local storage
-//Call the get-item on next page to retrieve data
-//Don't forget to parse and stringify the JSON object 
+//constants for products information
+const productImage = document.getElementsByClassName('card-img-top')[0];
+const productDescription = document.getElementsByClassName('card-description');
+const productName = document.getElementsByClassName('card-name');
+const productPrice = document.getElementsByClassName('card-price');
+const productLenses = document.getElementsByClassName('lenses');
+//submit button
+const submitButton = document.getElementById('submitProductButton');
 
-function addToCart(){
-    //for the add to cart button 
-    const submitButton = document.getElementById ("submitProductButton");
-    //listen for click events to this button  
-    submitProductButton.addEventListener("click", (event) => {
-        event.preventDefault();
+//EventListener for add to cart button
+// submitButton.addEventListener('click', (e) =>{
+//   e.preventDefault();
 
-      //creating constant for lenses and recovery of value 
-      const cameraSelect = document.getElementById("lenses");
+//   //creating basketpreview
 
-      //creating object to add to the basket 
+// })
 
-      let newProduct = {
-        lenses: cameraSelect.value,
-      };
+function AddToCart(data){
 
-      let productBasket = JSON.parse(localStorage.getItem("product"));
-
-      if (productBasket < 1) {
-        productBasket = [];
-      }
-      productBasket.push(newProduct);
-      localStorage.setItem("product", JSON.stringify(productBasket));
-    });
+  // you need to check if the localstorgae cart has value or not if have a value we need to push to this aarray if not we need to add the prouct 
+  console.log(data)
+  localStorage.setItem('cart',JSON.stringify(data))
 }
