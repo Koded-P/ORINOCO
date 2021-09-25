@@ -55,55 +55,6 @@ const productPrice = document.getElementsByClassName('card-price');
 const productLenses = document.getElementsByClassName('lenses');
 //submit button
 
-// //Add to basket function
-// function AddToCart(data) {
-//     if (data == null) {
-//         return;
-//     }
-//     let cart = GetBasket();
-//     let indexInBasket = GetBasket((data) => data._id === productId);
-
-//     if (indexInBasket <= 0) {
-//         // data is present in basket
-//         data.quantity = 1;
-
-//         cart.push(data);
-//     } // data is present modify quantity
-//     else {
-//         cart[indexInBasket] += 1;
-//     }
-
-//     SaveBasket(cart);
-//     window.alert('Added Item to cart');
-
-//     // you need to check if the localstorage cart has value or not if have a value we need to push to this aarray if not we need to add the prouct
-//     console.log(data);
-//     localStorage.setItem('cart', JSON.stringify(data));
-// }
-
-// //Retrieve from Basket function
-// function GetBasket() {
-//     let basketFromStorage = localStorage.getItem('cart');
-//     if (basketFromStorage === null) {
-//         return [];
-//     } else {
-//         return JSON.stringify(basketFromStorage);
-//     }
-// }
-
-// //Save to Basket function
-// function SaveBasket(data) {
-//     let basketToSave = JSON.stringify(data);
-//     localStorage.setItem('cart', basketToSave);
-//     let basketFromStorage = localStorage.getItem('cart');
-
-//     for (let i = 0; i < basketFromStorage; i++) {
-//         if (data == 1) {
-//             data.push(basketToSave);
-//         }
-//     }
-// }
-
 // cart btn in index.html
 const cartBtn = document.querySelector('.cart-btn');
 const closeCartBtn = document.querySelector('.close-cart');
