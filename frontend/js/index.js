@@ -6,7 +6,7 @@
 
     console.log(data)
 
-    //afficher sur la page html
+    //list of productst HTML Block
     let listOfProducts = '';
     data.forEach(prod =>
         listOfProducts += `
@@ -26,7 +26,7 @@
 })
 
 .catch(function (error) {
-  window.alert('Le serveur n\'est pas disponible, essayez ultérieurement.');
+  window.alert('The server is not available, try again later');
 });
 
 
