@@ -28,3 +28,5 @@
 .catch(function (error) {
   window.alert('Le serveur n\'est pas disponible, essayez ultérieurement.');
 });
+
+
