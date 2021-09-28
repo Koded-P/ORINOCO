@@ -43,3 +43,24 @@ const address = document.getElementById('address')
 const country = document.getElementById('country')
 const post = document.getElementById('post')
 const state = document.getElementById('state')
+
+
+form.addEventListener('submit',()=>{
+    
+    let userInfo = {
+        firstname:firstname.value,
+        surname:surname.value,
+        email:email.value,
+        address:address.value,
+        post:post.value,
+        state:state.value,
+        country:country.value
+        
+    }
+    saveUser(userInfo)
+})
+
+// save user that made order to local storage
+function saveUser(userInfo){
+    localStorage.setItem('customer',JSON.stringify(userInfo))
+}
