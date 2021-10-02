@@ -47,7 +47,7 @@ const state = document.getElementById('state')
 
 form.addEventListener('submit',()=>{
     
-    let userInfo = {
+    let contact = {
         firstname:firstname.value,
         surname:surname.value,
         email:email.value,
@@ -57,10 +57,26 @@ form.addEventListener('submit',()=>{
         country:country.value
         
     }
-    saveUser(userInfo)
-})
 
-// save user that made order to local storage
-function saveUser(userInfo){
-    localStorage.setItem('customer',JSON.stringify(userInfo))
-}
+    let products = [];
+    for (listId of basket){
+        products.push(listId.id);
+    }
+    
+    //Post all information to local storage 
+    fetch("http://localhost:3000/api/cameras/order", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({contact, products}),
+    })
+    .then((response) => response.json())
+    .then((data) =>{
+        localStorage.setItem('customer', JSON.stringify(data));
+        document.location.href ="orderConfirmation.html";
+    })
+    .catch((error))
+
+    saveUser(contact, products)
+})
