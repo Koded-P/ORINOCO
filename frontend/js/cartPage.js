@@ -73,7 +73,7 @@ form.addEventListener('submit',()=>{
     })
     .then((response) => response.json())
     .then((data) =>{
-        localStorage.setItem('customer', JSON.stringify(data));
+        localStorage.setItem('orderId', JSON.stringify(data));
         document.location.href ="orderConfirmation.html";
     })
     .catch((error))
