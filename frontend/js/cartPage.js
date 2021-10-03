@@ -45,22 +45,21 @@ const post = document.getElementById('post')
 const state = document.getElementById('state')
 
 
-form.addEventListener('submit',()=>{
-    
+form.addEventListener('submit',(e)=>{
+    e.preventDefault()
     let contact = {
-        firstname:firstname.value,
-        surname:surname.value,
+        firstName:firstname.value,
+        lastName:surname.value,
         email:email.value,
         address:address.value,
-        post:post.value,
-        state:state.value,
-        country:country.value
+        
+        city:country.value
         
     }
 
     let products = [];
-    for (listId of basket){
-        products.push(listId.id);
+    for (listId of getCart()){
+        products.push(listId._id);
     }
     
     //Post all information to local storage 
@@ -73,10 +72,11 @@ form.addEventListener('submit',()=>{
     })
     .then((response) => response.json())
     .then((data) =>{
+console.log(data)
         localStorage.setItem('orderId', JSON.stringify(data));
         document.location.href ="orderConfirmation.html";
     })
     .catch((error))
 
-    saveUser(contact, products)
+   // saveUser(contact, products)
 })
