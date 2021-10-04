@@ -88,10 +88,6 @@ class Storage {
         localStorage.setItem('cartTotal',total)
     }
 
-    // static getProduct(id){
-    //   let product = JSON.parse(localStorage.getItem('product'))
-    // }
-
     static getCart() {
         //if cart exist in the local storage return cart else return an empty array
         return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];

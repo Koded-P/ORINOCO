@@ -52,7 +52,6 @@ form.addEventListener('submit',(e)=>{
         lastName:surname.value,
         email:email.value,
         address:address.value,
-        
         city:country.value
         
     }
