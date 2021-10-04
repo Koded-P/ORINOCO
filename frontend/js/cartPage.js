@@ -77,6 +77,4 @@ console.log(data)
         document.location.href ="orderConfirmation.html";
     })
     .catch((error))
-
-   // saveUser(contact, products)
 })
