@@ -19,18 +19,20 @@
     <li><p>An order confirmation page , thanking the user for their order, showing the total price and the order ID returned by the server</p></li>
 </ul>
 
-<p>Functions</p>
+<h3>Functions</h3>
 
-<ul>addToCart()</ul>
-<ul>setCartValues()</ul>
-<ul>addCartItem()</ul>
-<ul>showCart()</ul>
-<ul>loadCart()</ul>  
-<ul>hideCart()</ul>
-<ul>populateCart()</ul>
-<ul>removeItem()</ul>
-<ul>cartLogic()</ul>
-<ul>clearCart()</ul>
+<ul>
+    <li><p>addToCart()</p></li>
+    <li><p>setCartValues()</p></li>
+    <li><p>addCartItem()</p></li>
+    <li><p>showCart()</p></li>
+    <li><p>loadCart()</p></li>
+    <li><p>hideCart()</p></li>
+    <li><p>populateCart()</p></li>
+    <li><p>removeItem()</p></li>
+    <li><p>cartLogic()</p></li>
+    <li><p>clearCart()</p></li>
+</ul>
 
 
 
