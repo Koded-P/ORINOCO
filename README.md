@@ -18,4 +18,19 @@
     <li><p>A cart page (using the localStorage JavaScript functionality), showing a summary of products in the cart, the total price, and a form with which to submit an order.</p></li>
     <li><p>An order confirmation page , thanking the user for their order, showing the total price and the order ID returned by the server</p></li>
 </ul>
-  
+
+<p>Functions</p>
+
+<ul>addToCart()</ul>
+<ul>setCartValues()</ul>
+<ul>addCartItem()</ul>
+<ul>showCart()</ul>
+<ul>loadCart()</ul>  
+<ul>hideCart()</ul>
+<ul>populateCart()</ul>
+<ul>removeItem()</ul>
+<ul>cartLogic()</ul>
+<ul>clearCart()</ul>
+
+
+
