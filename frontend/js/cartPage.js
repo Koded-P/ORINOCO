@@ -28,7 +28,6 @@ if (getCart().length > 0) {
    displayTable.insertAdjacentHTML('beforeend', listOfProducts);
    displayTable.insertAdjacentHTML("afterend",`TOTAL:<td>€${getCartTotal()}</td>`)
 }else{
-    console.log('empty')
 }
 
 const form = document.getElementById('form')
@@ -67,7 +66,6 @@ form.addEventListener('submit',(e)=>{
     })
     .then((response) => response.json())
     .then((data) =>{
-console.log(data)
         localStorage.setItem('orderId', JSON.stringify(data));
         document.location.href ="orderConfirmation.html";
     })

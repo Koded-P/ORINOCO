@@ -6,11 +6,6 @@
   --mainSpacing: 0.1rem;
   --mainTransition: all 0.3s linear;
 }
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-} */
 
 .form-group.success input{
   border: green solid 2px;
@@ -37,11 +32,6 @@
   display: none;
 }
 
-
-#form{
-  
-}
-
 .form-control{
   margin-bottom: 10px;
   padding-bottom: 20px;
@@ -58,11 +48,9 @@
 .form-group small{
   visibility: hidden;
  
- 
 }
 
 .p{
-  /* border: 1px red solid; */
   padding: 1%;
   margin-bottom: 5%;
  
@@ -217,7 +205,6 @@ header {
   height: 190px;
   -o-object-fit: cover;
      object-fit: cover;
-  /*affiche l'image qui reste centrer en gardant l'aspect ratio*/
 }
 
 h1, h2 {
@@ -302,4 +289,3 @@ footer {
     font-size: 13px;
   }
 }
-/*# sourceMappingURL=style.css.map */

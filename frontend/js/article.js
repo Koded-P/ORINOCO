@@ -37,7 +37,6 @@ fetch('http://localhost:3000/api/cameras/' + productId)
         document
             .getElementById('submitProductButton')
             .addEventListener('click', () => addToCart(data));
-        console.log(data);
         Storage.saveProduct(data);
     })
 
@@ -57,7 +56,7 @@ const cartTotal = document.querySelector('.cart-total');
 const cartContent = document.querySelector('.cart-content');
 const productsDom = document.querySelector('.products-center');
 
-let cart = []; //initial state of the cart
+let cart = []; 
 
 //localstorage
 class Storage {
@@ -81,17 +80,13 @@ class Storage {
 }
 
 function addToCart(data) {
-    //check if item you want to add is already in cart array using the ID. Check to see if the ID matches any product in the cart
     let inCart = cart.find((item) => item._id === data._id);
-    const submitBtn = document.getElementById('submitProductButton');//access the submit button
-    // console.log(submitBtn)
+    const submitBtn = document.getElementById('submitProductButton');
 
-    if (inCart) {//if the product exist in cart 
+    if (inCart) {
         submitBtn.innerText = 'Item Already in Cart';
-        submitBtn.disabled = true;//disable the button so user cant readd it 
+        submitBtn.disabled = true;
     } else {
-        //get product from localstorage
-        //get all properties and values from data and add a new property called number and set value to 1
         let cartItem = { ...data, number: 1 };
 
 
@@ -104,10 +99,9 @@ function addToCart(data) {
         //display cart items
         addCartItem(cartItem);
         //show cart
-        // showCart()
     }
 }
-//
+
 function setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
