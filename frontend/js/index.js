@@ -3,9 +3,7 @@
 .then(response => { return response.json() })
 
 .then(data => {
-
-    console.log(data)
-
+  
     //list of productst HTML Block
     let listOfProducts = '';
     data.forEach(prod =>
