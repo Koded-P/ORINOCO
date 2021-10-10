@@ -3,7 +3,6 @@ const displayTable = document.querySelector('.display-table');
 const tableTotal = document.querySelector('.total');
 
 function getCart() {
-    //if cart exist in the local storage return cart else return an empty array
     return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
 }
 
@@ -22,14 +21,11 @@ if (getCart().length > 0) {
         <td>€${cart.price}</td>
         <td>${cart.number}</td>
         
-        
-        
-        
       </tr>
       `
     );
     // displayTable.appendChild(listOfProducts)
-   displayTable.insertAdjacentHTML('beforeend', listOfProducts); 
+   displayTable.insertAdjacentHTML('beforeend', listOfProducts);
    displayTable.insertAdjacentHTML("afterend",`TOTAL:<td>€${getCartTotal()}</td>`)
 }else{
     console.log('empty')
